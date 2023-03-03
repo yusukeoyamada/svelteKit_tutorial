@@ -1,0 +1,20 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// 以下で、Todoテーブルを作成
+// idは自動で順番に番号が付与、nameはTodoの名前で文字列
+// isCompleteは、Todoが完了したかどうかを表す
+model Todo {
+  id Int @id @default(autoincrement())
+  name String
+  isComplete Boolean @default(value: false)
+}
